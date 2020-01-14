@@ -14,10 +14,14 @@ mysql -u root wordpress < wordpress.sql
 mkdir var/www/html/phpmyadmin/tmp
 chmod 777 var/www/html/phpmyadmin/tmp
 apt-get -y install php-mbstring
+
+mkdir etc/nginx/ssl
+chmod 700 etc/nginx/ssl
+mv ssl.* etc/nginx/ssl/.
+
 #service start
-
 service mysql restart
-service nginx start
 service php7.3-fpm start
-
+echo "daemon off;" >> etc/nginx/nginx.conf
+service nginx start
 

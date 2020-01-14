@@ -29,6 +29,10 @@ COPY srcs/wp-config.php var/www/html/.
 COPY srcs/default etc/nginx/sites-available/.
 COPY srcs/script.sh .
 COPY srcs/phpmyadmin.sql .
-#CMD ["bash", "script.sh"]
 COPY srcs/wordpress.sql .
-#DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
+COPY srcs/ssl.key .
+COPY srcs/ssl.crt .
+#RUN echo "daemon off;" >> etc/nginx/nginx.conf
+#RUN sh script.sh
+CMD ["sh", "script.sh"]
+#DEBIAN_FRONTEND=noninteractive apt-get install -y  mysql-server
