@@ -9,7 +9,7 @@ RUN apt-get -y install unzip vim wget lsb-release gnupg
 RUN apt-get -y install nginx
 RUN apt-get -y install php7.3-fpm
 RUN apt-get -y install php-mysql
-#RUN apt-get -y install php-mbstring
+
 #installing mysql-server
 RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
 RUN DEBIAN_FRONTEND=noninteractive dpkg -i mysql-apt-config_0.8.13-1_all.deb
@@ -20,8 +20,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt -y install mysql-server
 
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.1/phpMyAdmin-5.0.1-all-languages.zip && mv *.zip /var/www/html/.
 RUN unzip /var/www/html/phpMyAdmin-5.0.1-all-languages.zip && mv phpMyAdmin-5.0.1-all-languages var/www/html/phpmyadmin
-COPY srcs/html.zip .
 COPY srcs/config.inc.php var/www/html/phpmyadmin/.
+
 #Wordpress set-up
 RUN wget https://wordpress.org/latest.zip
 RUN unzip latest.zip && mv wordpress/* var/www/html/.
@@ -32,7 +32,7 @@ COPY srcs/phpmyadmin.sql .
 COPY srcs/wordpress.sql .
 COPY srcs/ssl.key .
 COPY srcs/ssl.crt .
-#RUN echo "daemon off;" >> etc/nginx/nginx.conf
+
 #RUN sh script.sh
 CMD ["sh", "script.sh"]
-#DEBIAN_FRONTEND=noninteractive apt-get install -y  mysql-server
+

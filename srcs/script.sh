@@ -8,6 +8,7 @@ mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'Ayoub'@'localhost' IDENTIFIED 
 mysql -u root -e "CREATE DATABASE phpmyadmin;"
 mysql -u root phpmyadmin < phpmyadmin.sql
 
+#wordpress Configuration
 mysql -u root -e "CREATE DATABASE wordpress;"
 mysql -u root wordpress < wordpress.sql
 
@@ -24,4 +25,4 @@ service mysql restart
 service php7.3-fpm start
 echo "daemon off;" >> etc/nginx/nginx.conf
 service nginx start
-
+rm /var/www/html/index.nginx-debian.html 

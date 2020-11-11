@@ -1,4 +1,4 @@
-me: adduser/homedir-permission
+Name: adduser/homedir-permission
 Template: adduser/homedir-permission
 Value: true
 Owners: adduser
